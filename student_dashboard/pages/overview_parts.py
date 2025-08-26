@@ -77,9 +77,12 @@ CSV_DEFAULT = os.path.join(APP_DIR, "data", "uploaded_latest.csv")
 def _load_default_raw_dataframe() -> pd.DataFrame:
     if os.path.exists(CSV_DEFAULT):
         print(f"[data] reading {CSV_DEFAULT}")
-        return pd.read_csv(CSV_DEFAULT)
+        df = pd.read_csv(CSV_DEFAULT)
+        print(f"[data] shape: {df.shape}")          # 👈 add this
+        return df
     else:
         raise FileNotFoundError(f"CSV not found at {CSV_DEFAULT}")
+
 
 
 def load_df():
