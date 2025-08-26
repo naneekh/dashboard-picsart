@@ -15,9 +15,12 @@ from pages.overview_parts import default_store_payload
 DATA_STORE_INIT = default_store_payload() 
 
 import pages.overview
+import pages.overview_parts
 import pages.insights
 from pages.overview import filters as overview_filters
 from components.sidebar import build_sidebar
+
+from pages.overview_parts import default_store_payload  # 👈 uses your loader
 
 sidebar = build_sidebar(extra_panel=overview_filters)
 
@@ -72,7 +75,7 @@ header = dbc.Navbar(
 )
 
 app.layout = dbc.Container(fluid=True, children=[
-    dcc.Store(id="data-store", data=DATA_STORE_INIT),
+    dcc.Store(id="store", data=default_store_payload()),
 
     navbar,
     dbc.Row(className="g-2", children=[
