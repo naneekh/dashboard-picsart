@@ -466,6 +466,7 @@ def exam_line(d, x_key):
     Output("fig-stress-jobuni","figure"),
     Output("fig-focus-line", "figure"),
     Output("fig-exam-line", "figure"),
+    Input("_pages_location", "pathname"),
     Input("filter-wave", "value"),
     Input("filter-status", "value"),
     Input("filter-course", "value"),
