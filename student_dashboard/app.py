@@ -75,7 +75,7 @@ header = dbc.Navbar(
 )
 
 app.layout = dbc.Container(fluid=True, children=[
-    dcc.Store(id="store", data=default_store_payload()),
+    dcc.Store(id="data-store", data=default_store_payload()),
 
     navbar,
     dbc.Row(className="g-2", children=[
