@@ -75,7 +75,7 @@ header = dbc.Navbar(
 )
 
 app.layout = dbc.Container(fluid=True, children=[
-    dcc.Location(id="_pages_location"),
+    # dcc.Location(id="_pages_location"),
     dcc.Store(id="data-store", data=default_store_payload()),
 
     navbar,

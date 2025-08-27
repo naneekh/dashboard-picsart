@@ -78,7 +78,7 @@ def _load_default_raw_dataframe() -> pd.DataFrame:
     if os.path.exists(CSV_DEFAULT):
         print(f"[data] reading {CSV_DEFAULT}")
         df = pd.read_csv(CSV_DEFAULT)
-        print(f"[data] shape: {df.shape}")          # 👈 add this
+        # print(f"[data] shape: {df.shape}")          # 👈 add this
         return df
     else:
         raise FileNotFoundError(f"CSV not found at {CSV_DEFAULT}")
