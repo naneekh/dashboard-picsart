@@ -111,7 +111,6 @@ layout = dbc.Container(
     Output("fig-enroll-year","figure"),
     Output("fig-passfail","figure"),
     Output("avg-exams-col","children"),
-    Input("_pages_location","pathname"),
     Input("filter-wave","value"),
     Input("filter-status","value"),
     Input("filter-course","value"),
