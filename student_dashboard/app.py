@@ -9,6 +9,8 @@ app = dash.Dash(
     suppress_callback_exceptions=True
 )
 
+server = app.server
+
 from pages.overview_parts import default_store_payload
 DATA_STORE_INIT = default_store_payload() 
 
