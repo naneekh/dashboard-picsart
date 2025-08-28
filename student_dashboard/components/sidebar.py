@@ -87,14 +87,6 @@ def _reset_filters(n):
     prevent_initial_call=True
 )
 
-@callback(
-    Output("data-store", "data"),
-    Output("upload-status", "children"),
-    Input("upload-data", "contents"),
-    State("upload-data", "filename"),
-    prevent_initial_call=True
-)
-
 def _handle_upload(contents, filename):
     if not contents or not filename:
         return no_update, no_update

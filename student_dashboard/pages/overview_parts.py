@@ -71,18 +71,28 @@ def prepare_dataframe(df: pd.DataFrame):
     return out, COLS
 
 
-APP_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CSV_DEFAULT = os.path.join(APP_DIR, "data", "uploaded_latest.csv")
-
 def _load_default_raw_dataframe() -> pd.DataFrame:
-    if os.path.exists(CSV_DEFAULT):
-        print(f"[data] reading {CSV_DEFAULT}")
-        df = pd.read_csv(CSV_DEFAULT)
-        # print(f"[data] shape: {df.shape}")          # 👈 add this
-        return df
-    else:
-        raise FileNotFoundError(f"CSV not found at {CSV_DEFAULT}")
+    csv_path = os.path.join("data", "uploaded_latest.csv")
+    if os.path.exists(csv_path):
+        return pd.read_csv(csv_path)
 
+    sample_names = [
+        "synthetic_student_dataset_200 - Sheet1.csv",
+        "synthetic_student_dataset_200.csv",
+    ]
+    for name in sample_names:
+        if os.path.exists(name):
+            return pd.read_csv(name)
+
+    # 3) last resort: any CSV in /data
+    if os.path.isdir("data"):
+        for fn in os.listdir("data"):
+            if fn.lower().endswith(".csv"):
+                try:
+                    return pd.read_csv(os.path.join("data", fn))
+                except Exception:
+                    pass
+    return pd.DataFrame()
 
 
 def load_df():
